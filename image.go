@@ -20,6 +20,10 @@ func NewImage(img image.Image) *Image {
 	return &Image{data: img}
 }
 
+func (p *Image) Data() image.Image {
+	return p.data
+}
+
 func (p *Image) Format() string {
 	return p.format.String()
 }
