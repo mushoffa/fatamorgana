@@ -9,10 +9,10 @@ const (
 )
 
 func (e ImageType) String() string {
-	return [...]string{"unkown", "jpg", "png"}[e]
+	return [...]string{"unknown", "jpg", "png"}[e]
 }
 
-func mimetype(format string) ImageType {
+func formatType(format string) ImageType {
 	switch format {
 	case JPEG.String():
 		return JPEG
