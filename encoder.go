@@ -34,7 +34,7 @@ func (p *Image) Base64() (string, error) {
 
 func (p *Image) Bytes() ([]byte, error) {
 	buffer := new(bytes.Buffer)
-	encoder := encoders[p.mimetype]
+	encoder := encoders[p.format]
 
 	if err := encoder(buffer, p.data); err != nil {
 		return nil, err
