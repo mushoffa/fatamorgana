@@ -1,8 +1,8 @@
 package fatamorgana
 
 import (
+	"fmt"
 	"image"
-	"image/color"
 	"sync"
 
 	"github.com/mushoffa/fatamorgana/grayscale"
@@ -10,14 +10,31 @@ import (
 
 // Image is a data struct which embeds Go standard image library.
 type Image struct {
-	data     image.Image
-	mimetype ImageType
+	data   image.Image
+	format ImageType
 }
 
 // NewImage returns a new [Image] struct.
 func NewImage(img image.Image) *Image {
 
 	return &Image{data: img}
+}
+
+func (p *Image) Format() string {
+	return p.format.String()
+}
+
+func (p *Image) MimeType() string {
+	mimeEncoding := "data:image/%s;base64,"
+
+	switch p.format.String() {
+	case "png":
+		return fmt.Sprintf(mimeEncoding, "png")
+	case "jpg":
+		return fmt.Sprintf(mimeEncoding, "jpeg")
+	default:
+		return ""
+	}
 }
 
 func (p *Image) Grayscale(method grayscale.MethodType) *Image {
@@ -41,36 +58,7 @@ func (p *Image) Grayscale(method grayscale.MethodType) *Image {
 
 	wg.Wait()
 
-	return &Image{gray, p.mimetype}
-}
-
-// Monochrome converts given
-func (p *Image) Monochrome(method grayscale.MethodType, threshold uint8) *Image {
-	var wg sync.WaitGroup
-
-	bounds := p.data.Bounds()
-	mono := image.NewGray(bounds)
-
-	for x := bounds.Min.X; x < bounds.Max.X; x++ {
-		wg.Add(1)
-		go func(x int, wg *sync.WaitGroup, g *image.Gray) {
-			defer wg.Done()
-
-			for y := bounds.Min.Y; y < bounds.Max.Y; y++ {
-				pixel := p.data.At(x, y)
-				c := method.Convert(pixel).(color.Gray).Y
-				b := color.Black
-				if c > threshold {
-					b = color.White
-				}
-				g.Set(x, y, b)
-			}
-		}(x, &wg, mono)
-	}
-
-	wg.Wait()
-
-	return &Image{mono, p.mimetype}
+	return &Image{gray, p.format}
 }
 
 // Monochrome converts given
@@ -94,5 +82,5 @@ func (p *Image) Inverse() *Image {
 
 	wg.Wait()
 
-	return &Image{mono, p.mimetype}
+	return &Image{mono, p.format}
 }
