@@ -2,4 +2,4 @@
 
 package fatamorgana
 
-const Version = "v0.2.0"
+const Version = "v0.3.0"
