@@ -20,6 +20,15 @@ func NewImage(img image.Image) *Image {
 	return &Image{data: img}
 }
 
+func NewImageWithExtension(img image.Image, ext string) *Image {
+	format := formatType(ext)
+
+	return &Image{
+		data:   img,
+		format: format,
+	}
+}
+
 func (p *Image) Data() image.Image {
 	return p.data
 }
