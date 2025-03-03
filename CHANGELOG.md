@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0](https://github.com/mushoffa/fatamorgana/compare/v0.1.0...v0.2.0) (2025-03-03)
+
+
+### Features
+
+* **image:** Add new function to return image.Image type ([304711a](https://github.com/mushoffa/fatamorgana/commit/304711a30cb63c8fa9cb90168284d19cc09b051e))
+
 ## 0.1.0 (2025-03-03)
 
 
