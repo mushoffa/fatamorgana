@@ -2,7 +2,6 @@ package fatamorgana
 
 import (
 	"fmt"
-	"image"
 	"os"
 )
 
@@ -13,17 +12,7 @@ func Open(path string) (*Image, error) {
 	}
 	defer file.Close()
 
-	img, format, err := image.Decode(file)
-	if err != nil {
-		return nil, err
-	}
-
-	imgType := mimetype(format)
-
-	return &Image{
-		data:     img,
-		mimetype: imgType,
-	}, nil
+	return decode(file)
 }
 
 func (p *Image) Save(path, filename string) error {
@@ -32,14 +21,14 @@ func (p *Image) Save(path, filename string) error {
 		return err
 	}
 
-	filePath := fmt.Sprintf("%s/%s.%s", path, filename, p.mimetype.String())
+	filePath := fmt.Sprintf("%s/%s.%s", path, filename, p.format.String())
 	file, err := os.Create(filePath)
 	if err != nil {
 		return err
 	}
 	defer file.Close()
 
-	encoder := encoders[p.mimetype]
+	encoder := encoders[p.format]
 
 	return encoder(file, p.data)
 }
