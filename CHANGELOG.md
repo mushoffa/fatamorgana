@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.4.0](https://github.com/mushoffa/fatamorgana/compare/v0.3.0...v0.4.0) (2025-03-04)
+
+
+### Features
+
+* **crop:** Add image crop function ([13f3fc9](https://github.com/mushoffa/fatamorgana/commit/13f3fc996cf4c05411ec695afcaf38d742c45a37))
+* **histogram:** Add generate histogram function for monochrome image ([8b5c66e](https://github.com/mushoffa/fatamorgana/commit/8b5c66ebd439cd987295a25548989ef201c7cf64))
+
 ## [0.3.0](https://github.com/mushoffa/fatamorgana/compare/v0.2.0...v0.3.0) (2025-03-03)
 
 
