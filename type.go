@@ -9,12 +9,12 @@ const (
 )
 
 func (e ImageType) String() string {
-	return [...]string{"unknown", "jpg", "png"}[e]
+	return [...]string{"unknown", "jpeg", "png"}[e]
 }
 
 func formatType(format string) ImageType {
 	switch format {
-	case JPEG.String():
+	case "jpeg","jpg":
 		return JPEG
 	case PNG.String():
 		return PNG
