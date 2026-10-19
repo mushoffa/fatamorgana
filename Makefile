@@ -1,7 +1,7 @@
 MAIN_BRANCH=main
 # change to git-cliff instead of standard-version
 CLIFF=git-cliff
-NEXT_VERSION=bash scripts/next-version.sh
+NEXT_VERSION=bash .github/scripts/next-version.sh
 
 .PHONY: format test push report preview-% release-%
 

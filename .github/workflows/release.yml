@@ -28,7 +28,7 @@ jobs:
 
       - name: Inspect the release branch
         id: inspect
-        run: bash scripts/release-inspect.sh "${GITHUB_REF_NAME}" >> "${GITHUB_OUTPUT}"
+        run: bash .github/scripts/release-inspect.sh "${GITHUB_REF_NAME}" >> "${GITHUB_OUTPUT}"
 
       - name: Render the new changelog section
         id: cliff
@@ -47,14 +47,14 @@ jobs:
           TAG: ${{ steps.inspect.outputs.tag }}
           SECTION_FILE: ${{ steps.cliff.outputs.changelog }}
         run: |
-          bash scripts/update-changelog.sh "${TAG}"
-          bash scripts/commit-changelog.sh "${TAG}" "${GITHUB_REF_NAME}"
+          bash .github/scripts/update-changelog.sh "${TAG}"
+          bash .github/scripts/commit-changelog.sh "${TAG}" "${GITHUB_REF_NAME}"
 
       - name: Verify the release branch
         env:
           TAG: ${{ steps.inspect.outputs.tag }}
         run: |
-          REQUIRE_NEW_TAG=1 bash scripts/verify-release.sh \
+          REQUIRE_NEW_TAG=1 bash .github/scripts/verify-release.sh \
             "${TAG}" "$(git rev-parse HEAD)" "$(git rev-parse origin/main)"
 
       - name: Open or update the pull request
@@ -64,7 +64,7 @@ jobs:
           # The default token works once "Allow GitHub Actions to create and approve
           # pull requests" is enabled in the repository's Actions settings.
           GH_TOKEN: ${{ secrets.RELEASE_TOKEN || github.token }}
-        run: bash scripts/open-release-pr.sh "${GITHUB_REF_NAME}" "${TAG}"
+        run: bash .github/scripts/open-release-pr.sh "${GITHUB_REF_NAME}" "${TAG}"
 
   publish:
     name: tag and publish
@@ -94,4 +94,4 @@ jobs:
           HEAD_REF: ${{ github.event.pull_request.head.ref }}
           HEAD_SHA: ${{ github.event.pull_request.head.sha }}
           MERGE_SHA: ${{ github.event.pull_request.merge_commit_sha }}
-        run: bash scripts/publish-release.sh "${HEAD_REF#release/}" "${MERGE_SHA}" "${HEAD_SHA}"
+        run: bash .github/scripts/publish-release.sh "${HEAD_REF#release/}" "${MERGE_SHA}" "${HEAD_SHA}"
