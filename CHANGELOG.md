@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.6.0](https://github.com/mushoffa/fatamorgana/compare/v0.5.0...v0.6.0) (2026-10-19)
+
+
+
+### Features
+
+* **threshold:** Add Otsu global thresholding ([83b6e2a](https://github.com/mushoffa/fatamorgana/commit/83b6e2a3f2dd1af0d5055243b6ddbeac56e932e9))
+* **filter:** Add Savitzky-Golay filter ([9ebfc14](https://github.com/mushoffa/fatamorgana/commit/9ebfc143fe1a4856b00e463e53284af07eea9411))
+* Add Version() to report the module version ([7fd5e6f](https://github.com/mushoffa/fatamorgana/commit/7fd5e6fe5cf073eda5d8d60dc406247489ccf6e3))
+
 ## [0.5.0](https://github.com/mushoffa/fatamorgana/compare/v0.4.0...v0.5.0) (2025-03-07)
 
 
