@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.7.0](https://github.com/mushoffa/fatamorgana/compare/v0.6.0...v0.7.0) (2026-10-23)
+
+
+### Breaking Changes
+
+* **histogram:** Histogram.HORIZONTAL and histogram.VERTICAL are now
+histogram.Horizontal and histogram.Vertical. ([415c463](https://github.com/mushoffa/fatamorgana/commit/415c463668431650ead372f32f8beed1a80a9060))
+
+
+
+### Features
+
+* **histogram:** **BREAKING** Add Binary profile and rename axis constants ([415c463](https://github.com/mushoffa/fatamorgana/commit/415c463668431650ead372f32f8beed1a80a9060))
+* **threshold:** Add Sauvola adaptive thresholding ([5989743](https://github.com/mushoffa/fatamorgana/commit/59897439d270b8eeb8ce816600adc021b6e5ad37))
+
+
+### Tests
+
+* **histogram:** Add Binary tests and benchmark ([829a87f](https://github.com/mushoffa/fatamorgana/commit/829a87fcdec9cd14f99fbac2f78a6d70ee90d913))
+* **threshold:** Add Otsu unit tests and benchmarks ([73f38e5](https://github.com/mushoffa/fatamorgana/commit/73f38e5d40706787047a95176f88be92dfd87f6c))
+* **threshold:** Add Sauvola unit tests and benchmark ([bdafb12](https://github.com/mushoffa/fatamorgana/commit/bdafb124399a79073abbbc88ab659775f8940a2e))
+
 ## [0.6.0](https://github.com/mushoffa/fatamorgana/compare/v0.5.0...v0.6.0) (2026-10-19)
 
 
