@@ -40,7 +40,7 @@ commit_parsers = [
   { message = "^fix", group = "<!-- 1 -->Bug Fixes" },
   { message = "^perf", group = "<!-- 2 -->Performance Improvements" },
   { message = "^refactor", group = "<!-- 3 -->Code Refactoring" },
-  { message = "^docs", group = "<!-- 4 -->Documentation" },
-  { message = "^test", group = "<!-- 5 -->Tests" },
+  { message = "^test", group = "<!-- 4 -->Tests" },
+  { message = "^docs", group = "<!-- 5 -->Documentation" },
   { message = "^(build|ci|chore|style)", skip = true },
 ]
