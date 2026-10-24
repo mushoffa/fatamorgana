@@ -21,8 +21,9 @@ jobs:
       group: release-prepare-${{ github.ref }}
       cancel-in-progress: false
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
+          ref: ${{ github.ref_name }}
           # git-cliff needs the full history and tags.
           fetch-depth: 0
 
@@ -77,7 +78,7 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           # The commit the merge produced on main, whichever merge method was used.
           ref: ${{ github.event.pull_request.merge_commit_sha }}
